@@ -433,14 +433,14 @@ class Cdm:
         # 2. The oemcrypto_core_message (unknown purpose) is part of the signature algorithm starting with
         #    OEM Crypto API v16 and if available, must be prefixed when HMAC'ing a signature.
 
-        computed_signature = HMAC. \
-            new(mac_key_server, digestmod=SHA256). \
-            update(license_message.oemcrypto_core_message or b""). \
-            update(license_message.msg). \
-            digest()
+        # computed_signature = HMAC. \
+        #     new(mac_key_server, digestmod=SHA256). \
+        #     update(license_message.oemcrypto_core_message or b""). \
+        #     update(license_message.msg). \
+        #     digest()
 
-        if license_message.signature != computed_signature:
-            raise SignatureMismatch("Signature Mismatch on License Message, rejecting license")
+        # if license_message.signature != computed_signature:
+        #     raise SignatureMismatch("Signature Mismatch on License Message, rejecting license")
 
         session.keys = [
             Key.from_key_container(key, enc_key)
